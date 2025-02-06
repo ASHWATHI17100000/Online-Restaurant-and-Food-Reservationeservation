@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        :root {
+            --yellow: #e6e619;
+            --light-purple: #f8f8ff;
+        }
+
+        .header {
+            padding: 20px 50px;
+            background-color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: black;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--yellow);
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+
+        .trending-section {
+            background-color: var(--light-purple);
+            padding: 40px 20px;
+        }
+
+        .trending-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+        }
+
+        .trending-title span {
+            color: var(--yellow);
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            padding: 10px 20px;
+            width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+        }
+
+        .restaurant-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .restaurant-card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .city-name {
+            color: #6495ED;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .restaurant-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .restaurant-name {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .details-section {
+            margin: 15px 0;
+        }
+
+        .details-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .cuisine, .features {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .rating {
+            color: gold;
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .restaurant-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .search-box {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Q<span>choice</span></a>
+        <nav class="nav">
+            <a href="About.html">About</a>
+            <a href="restaurant reviw.html">Review</a>
+            <a href="reservation1.html">Reservation</a>
+            <a href="offer view.html">Offers</a>
+            <a href="chefview.html">Chefview</a>
+            <a href="book.html">Book</a>
+        </nav>
+    </header>
+
+    <section class="trending-section">
+        <h1 class="trending-title"><span>Trending</span> restaurant in cities</h1>
+        
+        <div class="search-container">
+            <input type="text" class="search-box" placeholder="Search restaurants by city...">
+        </div>
+
+        <div class="restaurant-grid">
+            <!-- Coimbatore Restaurant -->
+            <div class="restaurant-card">
+                <h2 class="city-name">COIMBATORE</h2>
+                <img src="/api/placeholder/400/200" alt="Barbeque Nation" class="restaurant-image">
+                <h3 class="restaurant-name">BARBEQUE NATION</h3>
+                <div class="details-section">
+                    <p class="details-title">Details</p>
+                    <p class="cuisine">Indian</p>
+                    <p class="features">Award-winning restaurant | Private Dining |<br>Valet parking, Private dining</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+
+            <!-- Thanjavur Restaurant -->
+            <div class="restaurant-card">
+                <h2 class="city-name">THANJAVUR</h2>
+                <img src="/api/placeholder/400/200" alt="Taj Hotel" class="restaurant-image">
+                <h3 class="restaurant-name">TAJ HOTEL</h3>
+                <div class="details-section">
+                    <p class="details-title">Details</p>
+                    <p class="cuisine">Indian, International, Pan Asian</p>
+                    <p class="features">Luxury Dining Experience</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+
+            <!-- Tirupur Restaurant -->
+            <div class="restaurant-card">
+                <h2 class="city-name">TIRUPUR</h2>
+                <img src="/api/placeholder/400/200" alt="Anna Poorna" class="restaurant-image">
+                <h3 class="restaurant-name">ANNA POORNA</h3>
+                <div class="details-section">
+                    <p class="details-title">Details</p>
+                    <p class="cuisine">South Indian</p>
+                    <p class="features">Signature People | Traditional Food | Party Place</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+
+            <!-- Chennai Restaurant -->
+            <div class="restaurant-card">
+                <h2 class="city-name">CHENNAI</h2>
+                <img src="/api/placeholder/400/200" alt="Farola" class="restaurant-image">
+                <h3 class="restaurant-name">FAROLA</h3>
+                <div class="details-section">
+                    <p class="details-title">Details</p>
+                    <p class="cuisine">Chinese/Italian</p>
+                    <p class="features">Fine Dining | Romantic | Sea View</p>
+                    <div class="rating">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Search functionality
+        const searchBox = document.querySelector('.search-box');
+        const restaurantCards = document.querySelectorAll('.restaurant-card');
+
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            
+            restaurantCards.forEach(card => {
+                const cityName = card.querySelector('.city-name').textContent.toLowerCase();
+                const restaurantName = card.querySelector('.restaurant-name').textContent.toLowerCase();
+                
+                if (cityName.includes(searchTerm) || restaurantName.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+
+        // Animation for cards
+        restaurantCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+                card.style.transition = 'transform 0.3s ease';
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>

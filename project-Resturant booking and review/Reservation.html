@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QChoice Reservation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0e6d2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .logo {
+            font-size: 2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .seat-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        .seat {
+            width: 150px;
+            height: 100px;
+            background-color: #a52a2a;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+        .seat-labels {
+            display: flex;
+            justify-content: space-between;
+            color: white;
+            font-size: 0.8em;
+        }
+        .seat.selected {
+            border: 3px solid yellow;
+        }
+        .total-price {
+            font-size: 1.2em;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">QChoice</div>
+    <div class="seat-grid" id="seatGrid"></div>
+    <div class="total-price" id="totalPrice">Total Price: $0</div>
+    <div class="modal" id="confirmModal">
+        <div class="modal-content">
+            <h2>Reservation Confirmation</h2>
+            <p id="modalText"></p>
+            <button onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
+    <script>
+        const SEAT_PRICE = 10;
+        const sections = ['A1', 'A2', 'C1', 'C2'];
+        const rows = ['A', 'B', 'D'];
+        let selectedSeats = [];
+
+        function createSeatGrid() {
+            const grid = document.getElementById('seatGrid');
+            sections.forEach(section => {
+                rows.forEach(row => {
+                    const seat = document.createElement('div');
+                    seat.className = 'seat';
+                    seat.innerHTML = `
+                        <div class="seat-labels">
+                            <span>${section}</span>
+                            <span>${row}1, ${row}2</span>
+                        </div>
+                    `;
+                    seat.onclick = () => toggleSeat(seat, section, row);
+                    grid.appendChild(seat);
+                });
+            });
+        }
+
+        function toggleSeat(seatElement, section, row) {
+            const seatId = `${section}-${row}`;
+            const seatIndex = selectedSeats.indexOf(seatId);
+            
+            if (seatIndex > -1) {
+                selectedSeats.splice(seatIndex, 1);
+                seatElement.classList.remove('selected');
+            } else {
+                selectedSeats.push(seatId);
+                seatElement.classList.add('selected');
+            }
+
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+            const totalPriceEl = document.getElementById('totalPrice');
+            const totalPrice = selectedSeats.length * SEAT_PRICE;
+            totalPriceEl.textContent = `Total Price: $${totalPrice}`;
+        }
+
+        function bookSeats() {
+            if (selectedSeats.length === 0) {
+                alert('Please select at least one seat');
+                return;
+            }
+            
+            const modalText = document.getElementById('modalText');
+            modalText.textContent = `Total Price: $${selectedSeats.length * SEAT_PRICE}`;
+            
+            const modal = document.getElementById('confirmModal');
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('confirmModal');
+            modal.style.display = 'none';
+        }
+
+        createSeatGrid();
+    </script>
+</body>
+</html>

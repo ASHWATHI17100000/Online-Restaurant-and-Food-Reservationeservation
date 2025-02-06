@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Qchoice</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        :root {
+            --yellow: #e6e619;
+            --background: #fdf5e6;
+        }
+
+        .header {
+            padding: 20px 50px;
+            background-color: white;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            text-decoration: none;
+            color: black;
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--yellow);
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            position: relative;
+        }
+
+        .nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--yellow);
+            transition: width 0.3s;
+        }
+
+        .nav a:hover::after {
+            width: 100%;
+        }
+
+        .nav a.active {
+            color: var(--yellow);
+        }
+
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .main-content {
+            background-color: var(--background);
+            min-height: calc(100vh - 80px);
+            padding: 50px 0;
+        }
+
+        .burger-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .burger-image {
+            width: 100%;
+            max-width: 800px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-title {
+            margin: 40px 0 20px;
+            font-size: 36px;
+            text-align: center;
+        }
+
+        .about-title span {
+            color: var(--yellow);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 30px;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            line-height: 1.8;
+            text-align: justify;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .about-content {
+                text-align: left;
+            }
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Mobile nav styles */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 10px 0;
+            text-decoration: none;
+            color: black;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="logo">Q<span>choice</span></a>
+        <nav class="nav">
+            <a href="About.html" class="active">About</a>
+            <a href="restaurant reviw.html">Review</a>
+            <a href="reservation1.html">Reservation</a>
+            <a href="offer view.html">Offers</a>
+            <a href="chefview.html">Chefview</a>
+            <a href="book.html">Book</a>
+        </nav>
+        <div class="icons">
+            <span>🔍</span>
+            <span>❤️</span>
+            <span>🛒</span>
+        </div>
+        <button class="menu-btn">☰</button>
+    </header>
+
+    <div class="mobile-nav">
+        <a href="About.html" class="active">About</a>
+        <a href="restaurant reviw.html">Review</a>
+        <a href="reservation1.html">Reservation</a>
+        <a href="offer view.html">Offers</a>
+        <a href="chefview.html">Chefview</a>
+        <a href="book.html">Book</a>
+    </div>
+
+    <main class="main-content">
+        <div class="burger-container">
+            <img src="/api/placeholder/800/300" alt="Delicious Burger" class="burger-image">
+        </div>
+
+        <h1 class="about-title"><span>About</span> Us</h1>
+        <h2 class="subtitle">Why Choose Us?</h2>
+
+        <div class="about-content">
+            Today's guests have a few expectations about a table. Not only do they want a comfortable experience from the beginning of their interaction to the end with any restaurant or foodie, but they also expect real-time availability of information. Today's Qchoice app gives customers the freedom to make a booking whenever they like without having to call you. Currently, restaurants have a variety of options to choose from. People attracted by its authentic and metropolitan custom ambition order restaurant website can make inside-free bookings, and know they'll be immediately notified of any adjustments in seating. Guests can make their own elections and list any preferences through a mobile or resident on website interface. Key Takeaways Qchoice can provide our chef signature dishes to help you learn cooking. For smaller restaurants who want to entice clients with fewer cost of features at the lowest cost look at lower-pricing tiers of Qchoice App and other app. The most cost-effective options are Qchoice. For large hospitality companies consider Qchoice App. For your business, restaurant reservations systems represent a huge lifting of responsibilities from staff and significantly improve day-to-day operations. Past activity, guest distribution, and dining preferences for each table can all be readily accessed. In addition, you can integrate the saved customer information (birthday, anniversary, etc.) into a great loyalty program to create a memorable experience for your regular customers.
+        </div>
+    </main>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+
+        menuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.menu-btn') && !e.target.closest('.mobile-nav')) {
+                mobileNav.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll animation for content
+        window.addEventListener('scroll', () => {
+            const content = document.querySelector('.about-content');
+            const contentPosition = content.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.3;
+
+            if (contentPosition < screenPosition) {
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }
+        });
+
+        // Back to top functionality
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const backToTop = document.querySelector('.back-to-top');
+
+            if (scrollPosition > 300) {
+                backToTop?.classList.add('visible');
+            } else {
+                backToTop?.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>

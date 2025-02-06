@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QChoice Restaurant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(120deg, #fff59d, #ffcdd2);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: inline-block;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #d4d415;
+        }
+
+        nav {
+            float: right;
+            margin-top: 0.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 2rem;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: #d4d415;
+        }
+
+        .main-title {
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            margin: 2rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .offers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .offer-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            height: 400px;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .offer-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .offer-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: rgba(0,0,0,0.7);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                float: none;
+                display: flex;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            nav a {
+                margin: 0 1rem;
+            }
+
+            .logo {
+                display: block;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">Q<span>choice</span></div>
+        <nav>
+            <a href="About.html">About</a>
+            <a href="restaurant reviw.html">Review</a>
+            <a href="reservation1.html">Reservation</a>
+            <a href="offer view.html">Offers</a>
+            <a href="chefview.html">Checknow</a>
+            <a href="book.html">Book</a>
+        </nav>
+    </header>
+
+    <h1 class="main-title">Our Special Offers</h1>
+
+    <div class="offers-container">
+        <div class="offer-card">
+            <img src="/api/placeholder/400/400" alt="Happy Hour" />
+            <div class="offer-text">
+                <h3>Happy Hour Specials</h3>
+                <p>Join us Monday to Friday, 5-7PM for special drinks and appetizers!</p>
+            </div>
+        </div>
+        <div class="offer-card">
+            <img src="/api/placeholder/400/400" alt="Pizza Special" />
+            <div class="offer-text">
+                <h3>30 for 30 end of the month promo</h3>
+                <p>Get any large pizza for just $30!</p>
+            </div>
+        </div>
+        <div class="offer-card">
+            <img src="/api/placeholder/400/400" alt="Romantic Date Night" />
+            <div class="offer-text">
+                <h3>Romantic date night at home</h3>
+                <p>Special couples menu with wine pairing</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling to navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const section = document.querySelector(this.getAttribute('href'));
+                if(section) {
+                    section.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add animation to cards on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.offer-card').forEach(card => {
+            card.style.opacity = 0;
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

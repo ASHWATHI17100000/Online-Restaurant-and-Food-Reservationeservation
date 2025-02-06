@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Booking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('wine-glass.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(0.7);
+            z-index: -1;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .booking-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #999;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #666;
+        }
+
+        .book-btn {
+            width: 100%;
+            padding: 12px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .book-btn:hover {
+            background: #444;
+        }
+
+        .error-message {
+            color: #ff0000;
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="container">
+        <div class="booking-form">
+            <h1>Find your table for any occasion</h1>
+            <p class="subtitle">Get started with your first experience<br>BOOK NOW!</p>
+            
+            <form id="bookingForm">
+                <div class="form-group">
+                    <label>First name:</label>
+                    <input type="text" id="firstName" placeholder="First name">
+                    <span class="error-message" id="firstNameError">Please enter your first name</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Last name:</label>
+                    <input type="text" id="lastName" placeholder="Last name">
+                    <span class="error-message" id="lastNameError">Please enter your last name</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" id="email" placeholder="Email">
+                    <span class="error-message" id="emailError">Please enter a valid email</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" id="password" placeholder="Password">
+                    <span class="error-message" id="passwordError">Password must be at least 6 characters</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Restaurant name:</label>
+                    <input type="text" id="restaurant" placeholder="Restaurant name">
+                    <span class="error-message" id="restaurantError">Please enter restaurant name</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Table number:</label>
+                    <input type="number" id="table" placeholder="Table number">
+                    <span class="error-message" id="tableError">Please enter a valid table number</span>
+                </div>
+
+                <button type="submit" class="book-btn">BOOK NOW</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let isValid = true;
+
+            // Reset all error messages
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.style.display = 'none';
+            });
+
+            // Validate First Name
+            if (!document.getElementById('firstName').value.trim()) {
+                document.getElementById('firstNameError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Last Name
+            if (!document.getElementById('lastName').value.trim()) {
+                document.getElementById('lastNameError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(document.getElementById('email').value)) {
+                document.getElementById('emailError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Password
+            if (document.getElementById('password').value.length < 6) {
+                document.getElementById('passwordError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Restaurant Name
+            if (!document.getElementById('restaurant').value.trim()) {
+                document.getElementById('restaurantError').style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate Table Number
+            const tableNum = document.getElementById('table').value;
+            if (!tableNum || tableNum < 1) {
+                document.getElementById('tableError').style.display = 'block';
+                isValid = false;
+            }
+
+            if (isValid) {
+                // Form is valid, you can submit it to server here
+                alert('Booking successful!');
+                this.reset();
+            }
+        });
+    </script>
+</body>
+</html>
